@@ -21,7 +21,11 @@ require __DIR__.'/auth.php';
 
 
 // Admin routes : 
-Route::get ( '/admin/dashboard' , [ AdminController::class , 'index' ] ) -> name ('admin.dashboard')
+Route::get ( '/admin/dashboard' , [ AdminController::class , 'dashboard' ] ) -> name ('admin.dashboard')
             -> middleware ([ 'auth' , 'admin']) ; 
+
+Route::get ('admin/category' , [ AdminController::class , 'view_category' ] )->name ('admin.view_category') ; 
+
+Route::post ( 'admin/category' , [AdminController::class , 'create_category' ] )->name ('admin.create_category') ;
 
         
