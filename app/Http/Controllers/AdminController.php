@@ -15,10 +15,10 @@ class AdminController extends Controller
     }
 
     // View category : 
-    public function view_category () {
+    public function categories_list () {
 
         $categories = Category::all() ;
-        return view ( 'admin.view_category' , compact ('categories') ) ; 
+        return view ( 'admin.categories_list' , compact ('categories') ) ; 
     }
 
 
@@ -49,4 +49,25 @@ class AdminController extends Controller
 
         return redirect() -> back () ; 
     }
+
+
+
+    // edit category : 
+    public function edit_category ( $id ) {
+
+        $category = Category::find ( $id ) ; 
+        return view ('admin.view_category' , compact ( 'category' ) ) ;
+    }
+
+    public function update_category (Request $request , $id ) {
+        
+        $category = Category::find ( $id ) ;
+
+        $category -> name = $request -> input ( 'category_name' ) ; 
+        $category -> save () ; 
+
+        return redirect () -> route ('admin.categories_list') ;
+    }
+
+   
 }
