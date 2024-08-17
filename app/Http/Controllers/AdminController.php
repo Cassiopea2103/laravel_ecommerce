@@ -28,6 +28,9 @@ class AdminController extends Controller
             'name' => $request -> input ( 'category_name' ) ,
         ]);
 
+
+        // display a success create toast message : 
+        flash() -> success ('Category created successfully!') ; 
         return redirect() -> route('admin.view_category');
     }   
 }
