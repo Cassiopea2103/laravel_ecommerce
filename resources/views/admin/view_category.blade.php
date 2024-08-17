@@ -45,7 +45,10 @@
                             <tr>
                                 <td>{{$data-> name}}</td>
                                 <td class="pl-5">
-                                    <a href="{{route('admin.delete_category', $data-> id)}}" class="btn btn-danger">
+                                    <a 
+                                        href="{{route('admin.delete_category', $data-> id)}}" 
+                                        onclick="confirm_deletion ( event ) "
+                                        class="btn btn-danger">
                                         Delete
                                     </a>
                                 </td>
@@ -59,6 +62,34 @@
         </div>
     </div>
     <!-- JavaScript files-->
+    <!-- sweet alert begin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- sweet alert end -->
+
+    <!-- delete confirmation function  -->
+    <script type="text/javascript">
+        const confirm_deletion = ( event ) => {
+            event.preventDefault () ;
+
+            // get the current URL location :
+            const urlToRedirect = event.currentTarget.getAttribute ( 'href' ) ; 
+
+            swal ({
+                title : 'Are you sure you want to delete this item ?',
+                text : 'This action is irreversible' , 
+                icon : 'warning' ,
+                buttons : true ,
+                dangerMode : true 
+            })
+                .then (( willCancel ) => {
+                    if ( willCancel ) {
+                        window.location.href =urlToRedirect ; 
+                    }
+                })
+        }
+    </script>
+    <!-- end delete function -->
+
     <script src="{{asset('/admincss/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('/admincss/vendor/popper.js/umd/popper.min.js')}}"> </script>
     <script src="{{asset('/admincss/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
