@@ -44,7 +44,13 @@
                         @foreach ($categories as $data )
                             <tr>
                                 <td>{{$data-> name}}</td>
+                                <td class="pl-5">
+                                    <a href="{{route('admin.delete_category', $data-> id)}}" class="btn btn-danger">
+                                        Delete
+                                    </a>
+                                </td>
                             </tr>
+                           
                         @endforeach
                     </tbody>
                 </table>

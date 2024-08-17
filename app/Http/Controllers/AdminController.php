@@ -35,4 +35,18 @@ class AdminController extends Controller
         flash() -> success ('Category created successfully!') ; 
         return redirect() -> route('admin.view_category');
     }   
+
+
+    // delete a category : 
+    public function delete_category ( $id ) {
+        
+        // retrieve the cateogory by its id : 
+        $category = Category::find( $id ) ; 
+
+        $category -> delete () ; 
+
+        flash() -> success ("Category {$category-> name} deleted successfully");
+
+        return redirect() -> back () ; 
+    }
 }
