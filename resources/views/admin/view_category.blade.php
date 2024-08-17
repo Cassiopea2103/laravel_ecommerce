@@ -29,6 +29,26 @@
     
                 </form>
             </div>
+
+            <div>
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach ($categories as $data )
+                            <tr>
+                                <td>{{$data-> name}}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
             
         </div>
     </div>

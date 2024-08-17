@@ -16,7 +16,9 @@ class AdminController extends Controller
 
     // View category : 
     public function view_category () {
-        return view ( 'admin.view_category' ) ; 
+
+        $categories = Category::all() ;
+        return view ( 'admin.view_category' , compact ('categories') ) ; 
     }
 
 
