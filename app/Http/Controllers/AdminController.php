@@ -131,6 +131,13 @@ class AdminController extends Controller
         // retrieve product with id : 
         $product = Product::find ( $id ); 
 
+        // image path : 
+        $image_path = public_path ('products/' . $product-> image ) ; 
+
+        if ( file_exists ( $image_path ) ){
+            unlink ( $image_path ) ; 
+        }
+
         // delete product:
         $product -> delete () ; 
 
