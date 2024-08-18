@@ -50,6 +50,15 @@
                                         DELETE
                                 </a>
                             </td>
+
+                            <td>
+                                <a 
+                                    href="{{route('admin.edit_product', $product -> id )}}"
+                                    class="ml-3 px-5 btn btn-success"
+                                >
+                                    Edit
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

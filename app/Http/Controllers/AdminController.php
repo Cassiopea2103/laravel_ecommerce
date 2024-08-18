@@ -143,4 +143,52 @@ class AdminController extends Controller
 
         return redirect () -> route ('admin.view_products' ) ; 
     }
+
+
+    public function edit_product (Request $request , $id ) {
+
+        // retrieve the product : 
+        $product = Product::find ( $id ) ; 
+        $categories = Category::all() ; 
+
+        
+        return view ('admin.edit_product' , compact ('product', 'categories') ) ;
+    }
+
+    public function update_product ( Request $request , $id ) {
+
+        // retrieve the product via the ID : 
+        $product = Product::find ( $id ) ; 
+
+         // retrieve request data : 
+        //  and update the product item : 
+        $product-> name = $request -> name ; 
+        $product-> description = $request -> description ; 
+        $product-> category = $request -> category ; 
+        $product-> quantity = $request -> quantity ; 
+        $product-> price = $request -> price ; 
+        $product-> image  = $request -> image ; 
+
+        // check for request image data : 
+        if ( $request -> image ) {
+            // get the image name : 
+            $image_name = time().'.'.$request-> image-> getClientOriginalExtension() ; 
+
+            // move image to public products folder : 
+            $product-> image -> move ('products' , $image_name ) ; 
+
+            $product-> image = $image_name ;
+        }
+
+        // save the product item : 
+        $product -> save () ; 
+
+        flash() -> success ( 'Product updated successfully' ) ; 
+
+
+        // redirect user to products page : 
+        return redirect () -> route ( 'admin.view_products');
+
+
+    }
 }
