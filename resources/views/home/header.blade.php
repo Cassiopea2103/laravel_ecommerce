@@ -34,6 +34,32 @@
             </li>
           </ul>
           <div class="user_option">
+
+          @if ( Route::has ( 'login' ))
+          @auth
+
+          
+            <form method="POST" action="{{ route('logout') }}">
+                  @csrf
+
+                  <x-dropdown-link :href="route('logout')"
+                          onclick="event.preventDefault();
+                                      this.closest('form').submit();">
+                      {{ __('Log Out') }}
+                  </x-dropdown-link>
+              </form>
+
+              <a href="">
+              <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </a>
+            <form class="form-inline ">
+              <button class="btn nav_search-btn" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </form>
+
+
+            @else 
             <a href="{{route('login')}}">
               <i class="fa fa-user" aria-hidden="true"></i>
               <span>
@@ -48,15 +74,12 @@
               </span>
             </a>
 
+            @endauth
+          @endif
+              
 
-            <a href="">
-              <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-            </a>
-            <form class="form-inline ">
-              <button class="btn nav_search-btn" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </form>
+
+            
           </div>
         </div>
       </nav>
