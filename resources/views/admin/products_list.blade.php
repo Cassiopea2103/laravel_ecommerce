@@ -17,6 +17,15 @@
         
 
           <div>
+            <form method="get" action="{{route('admin.product_search')}}">
+                <input type="search" name = "search" /> 
+                <input type = "submit" value="Search product"  class="btn btn-secondary"/>
+            </form>
+          </div>
+
+
+
+          <div>
             <table>
                 <thead>
                     <tr>
