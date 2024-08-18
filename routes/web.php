@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ HomeController::class , 'home' ] ) -> name ( 'home' ) ;
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])-> middleware(['auth' , 'user'])->name('dashboard');
+    return view('home.index');
+})->middleware(['auth', 'verified'])-> middleware(['auth' , 'user'])->name('user_home');
 
 Route::middleware('auth')->group(function () { 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

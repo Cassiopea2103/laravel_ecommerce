@@ -18,7 +18,7 @@ class AdminMiddleware
     {
         // Redirect user to normal dashboard : 
         if ( Auth::user() -> usertype !== 'admin' ) {
-            return redirect () -> route ( 'dashboard' ) ;
+            return redirect () -> route ( 'home' ) ;
             
         }
                 
