@@ -30,6 +30,13 @@ Route::middleware (['auth' , 'admin'] )-> group ( function () {
     Route::get ('admin/edit_category/{id}' , [AdminController::class ,'edit_category' ] )-> name ('admin.edit_category');
     Route::post ( 'admin/update_category/{id}' , [AdminController::class ,'update_category']) -> name ('admin.update_category');
 
+
+    // Products : 
+    Route::get ( 'admin/products' , [AdminController::class , 'view_products']) -> name ('admin.view_products');
+    Route::get ('/admin/add_product', [AdminController::class , 'add_product']) -> name ('admin.add_product');
+    Route::post ( '/admin/add_product', [AdminController::class , 'upload_product']) -> name ('admin.upload_product');
+
+
 });
 
         
