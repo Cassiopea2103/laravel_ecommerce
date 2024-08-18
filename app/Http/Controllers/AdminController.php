@@ -126,4 +126,14 @@ class AdminController extends Controller
         return redirect () -> route ('admin.add_product')  ;
     }
    
+
+    public function delete_product ( $id ) {
+        // retrieve product with id : 
+        $product = Product::find ( $id ); 
+
+        // delete product:
+        $product -> delete () ; 
+
+        return redirect () -> route ('admin.view_products' ) ; 
+    }
 }
